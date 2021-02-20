@@ -1,4 +1,0 @@
-﻿  PPPP.cpp
-C:\Users\8181025\Desktop\Новая папка\PPPP\PPPP\PPPP.cpp(48,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
-C:\Users\8181025\Desktop\Новая папка\PPPP\PPPP\PPPP.cpp(49,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-  PPPP.vcxproj -> C:\Users\8181025\Desktop\Новая папка\PPPP\Debug\PPPP.exe
