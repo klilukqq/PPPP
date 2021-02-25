@@ -14,6 +14,25 @@ void matrix_print(int** matrix, int matrix_row_first, int matrix_column_first) {
 
 }
 
+int** filling_matrix(int** matrix,int matrix_row, int matrix_column, int type_filling) {
+	switch (type_filling)
+	{
+	case 1:
+		for (int number_lines = 0; number_lines < matrix_row; number_lines++)
+			for (int number_columns = 0; number_columns < matrix_column; number_columns++)
+				cin >> matrix[number_lines][number_columns];
+		break;
+	case 2:
+		for (int number_lines = 0; number_lines < matrix_row; number_lines++)
+			for (int number_columns = 0; number_columns < matrix_column; number_columns++)
+				matrix[number_lines][number_columns] = rand() % 10;
+		break;
+	default:
+		break;
+	}
+	return matrix;
+}
+
 
 int** convertion_matrix(int** modified_matrix, int** matrix, int required_matrix_size, int matrix_row, int matrix_column) {
 	for (int number_lines = 0; number_lines < required_matrix_size; number_lines++)
@@ -107,12 +126,8 @@ void main()
 	switch (chosen_method)
 	{
 	case 1:
-		for (int number_lines = 0; number_lines < matrix_row_first; number_lines++)
-			for (int number_columns = 0; number_columns < matrix_column_first; number_columns++)
-				cin >> matrix_first[number_lines][number_columns];
-		for (int number_lines = 0; number_lines < matrix_row_second; number_lines++)
-			for (int number_columns = 0; number_columns < matrix_column_second; number_columns++)
-				cin >> matrix_second[number_lines][number_columns];
+		matrix_first = filling_matrix(matrix_first, matrix_row_first, matrix_column_first, 1);
+		matrix_second = filling_matrix(matrix_second, matrix_row_second, matrix_column_second, 1);
 		cout << "\nМатрица 1\n\n";
 		matrix_print(matrix_first, matrix_row_first, matrix_column_first);
 		cout << "\nМатрица 2\n\n";
@@ -120,12 +135,8 @@ void main()
 
 		break;
 	case 2:
-		for (int number_lines = 0; number_lines < matrix_row_first; number_lines++)
-			for (int number_columns = 0; number_columns < matrix_column_first; number_columns++)
-				matrix_first[number_lines][number_columns] = rand() % 10;
-		for (int number_lines = 0; number_lines < matrix_row_second; number_lines++)
-			for (int number_columns = 0; number_columns < matrix_column_second; number_columns++)
-				matrix_second[number_lines][number_columns] = rand() % 10;
+		matrix_first = filling_matrix(matrix_first, matrix_row_first, matrix_column_first, 2);
+		matrix_second = filling_matrix(matrix_second, matrix_row_second, matrix_column_second, 2);
 		cout << "\nМатрица 1\n\n";
 		matrix_print(matrix_first, matrix_row_first, matrix_column_first);
 		cout << "\nМатрица 2\n\n";
