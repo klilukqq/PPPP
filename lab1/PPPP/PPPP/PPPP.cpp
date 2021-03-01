@@ -14,7 +14,7 @@ void matrix_print(int** matrix, int matrix_row_first, int matrix_column_first) {
 
 }
 
-int** filling_matrix(int** matrix,int matrix_row, int matrix_column, int type_filling) {
+void filling_matrix(int** matrix,int matrix_row, int matrix_column, int type_filling) {
 	switch (type_filling)
 	{
 	case 1:
@@ -30,11 +30,10 @@ int** filling_matrix(int** matrix,int matrix_row, int matrix_column, int type_fi
 	default:
 		break;
 	}
-	return matrix;
 }
 
 
-int** convertion_matrix(int** modified_matrix, int** matrix, int required_matrix_size, int matrix_row, int matrix_column) {
+void convertion_matrix(int** modified_matrix, int** matrix, int required_matrix_size, int matrix_row, int matrix_column) {
 	for (int number_lines = 0; number_lines < required_matrix_size; number_lines++)
 	{
 		modified_matrix[number_lines] = new int[required_matrix_size];
@@ -46,18 +45,16 @@ int** convertion_matrix(int** modified_matrix, int** matrix, int required_matrix
 		for (int number_columns = 0; number_columns < matrix_column; number_columns++)
 			modified_matrix[number_lines][number_columns] = matrix[number_lines][number_columns];
 	}
-	return modified_matrix;
 }
 
-int** create_optional_matrix(int ** inter_matrix, int required_matrix_size) {
+void create_optional_matrix(int ** inter_matrix, int required_matrix_size) {
 	for (int number_lines = 0; number_lines < required_matrix_size / 2; number_lines++)
 	{
 		inter_matrix[number_lines] = new int[required_matrix_size / 2];
 	}
-	return inter_matrix;
 }
 
-int** filling_submatrix(int** submatrix,int** modified_matrix,int required_matrix_size,int choose) {
+void filling_submatrix(int** submatrix,int** modified_matrix,int required_matrix_size,int choose) {
 
 	
 	for (int number_lines = 0; number_lines < required_matrix_size / 2; number_lines++)
@@ -83,7 +80,6 @@ int** filling_submatrix(int** submatrix,int** modified_matrix,int required_matri
 			}
 			
 	}
-	return submatrix;
 }
 
 
@@ -126,8 +122,8 @@ void main()
 	switch (chosen_method)
 	{
 	case 1:
-		matrix_first = filling_matrix(matrix_first, matrix_row_first, matrix_column_first, 1);
-		matrix_second = filling_matrix(matrix_second, matrix_row_second, matrix_column_second, 1);
+		filling_matrix(matrix_first, matrix_row_first, matrix_column_first, 1);
+		filling_matrix(matrix_second, matrix_row_second, matrix_column_second, 1);
 		cout << "\nМатрица 1\n\n";
 		matrix_print(matrix_first, matrix_row_first, matrix_column_first);
 		cout << "\nМатрица 2\n\n";
@@ -135,8 +131,8 @@ void main()
 
 		break;
 	case 2:
-		matrix_first = filling_matrix(matrix_first, matrix_row_first, matrix_column_first, 2);
-		matrix_second = filling_matrix(matrix_second, matrix_row_second, matrix_column_second, 2);
+		filling_matrix(matrix_first, matrix_row_first, matrix_column_first, 2);
+		filling_matrix(matrix_second, matrix_row_second, matrix_column_second, 2);
 		cout << "\nМатрица 1\n\n";
 		matrix_print(matrix_first, matrix_row_first, matrix_column_first);
 		cout << "\nМатрица 2\n\n";
@@ -148,9 +144,9 @@ void main()
 	while (required_matrix_size < matrix_row_first || required_matrix_size < matrix_row_second || required_matrix_size < matrix_column_first || required_matrix_size < matrix_column_second)
 		required_matrix_size *= 2;
 	int** modified_matrix_first = new int* [required_matrix_size];
-	modified_matrix_first = convertion_matrix(modified_matrix_first, matrix_first, required_matrix_size, matrix_row_first, matrix_column_first);
+	convertion_matrix(modified_matrix_first, matrix_first, required_matrix_size, matrix_row_first, matrix_column_first);
 	int** modified_matrix_second = new int* [required_matrix_size];
-	modified_matrix_second = convertion_matrix(modified_matrix_second, matrix_second, required_matrix_size, matrix_row_second, matrix_column_second);
+	convertion_matrix(modified_matrix_second, matrix_second, required_matrix_size, matrix_row_second, matrix_column_second);
 
 	cout << "Приведенные матрицы\n";
 	cout << "\nМатрица 1\n\n";
@@ -162,38 +158,38 @@ void main()
 	//Разбиение матриц на подматрицы и их заполнение
 
 	int** submatrix_first = new int* [required_matrix_size / 2];;
-	submatrix_first = filling_submatrix(submatrix_first, modified_matrix_first, required_matrix_size, 1);
+	filling_submatrix(submatrix_first, modified_matrix_first, required_matrix_size, 1);
 	int** submatrix_second = new int* [required_matrix_size / 2];
-	submatrix_second = filling_submatrix(submatrix_second, modified_matrix_first, required_matrix_size, 2);
+	filling_submatrix(submatrix_second, modified_matrix_first, required_matrix_size, 2);
 	int** submatrix_third = new int* [required_matrix_size / 2];
-	submatrix_third = filling_submatrix(submatrix_third, modified_matrix_first, required_matrix_size, 3);
+	filling_submatrix(submatrix_third, modified_matrix_first, required_matrix_size, 3);
 	int** submatrix_fourth = new int* [required_matrix_size / 2];
-	submatrix_fourth = filling_submatrix(submatrix_fourth, modified_matrix_first, required_matrix_size, 4);
+	filling_submatrix(submatrix_fourth, modified_matrix_first, required_matrix_size, 4);
 	int** submatrix_fifth = new int* [required_matrix_size / 2];
-	submatrix_fifth = filling_submatrix(submatrix_fifth, modified_matrix_second, required_matrix_size, 1);
+	filling_submatrix(submatrix_fifth, modified_matrix_second, required_matrix_size, 1);
 	int** submatrix_sixth = new int* [required_matrix_size / 2];
-	submatrix_sixth = filling_submatrix(submatrix_sixth, modified_matrix_second, required_matrix_size, 2);
+	filling_submatrix(submatrix_sixth, modified_matrix_second, required_matrix_size, 2);
 	int** submatrix_seventh = new int* [required_matrix_size / 2];
-	submatrix_seventh = filling_submatrix(submatrix_seventh, modified_matrix_second, required_matrix_size, 3);
+	filling_submatrix(submatrix_seventh, modified_matrix_second, required_matrix_size, 3);
 	int** submatrix_eighth = new int* [required_matrix_size / 2];
-	submatrix_eighth = filling_submatrix(submatrix_eighth, modified_matrix_second, required_matrix_size, 4);
+	filling_submatrix(submatrix_eighth, modified_matrix_second, required_matrix_size, 4);
 
 
 	//Создание промежуточных матриц
 	int** intermedia_matrix_first = new int* [required_matrix_size / 2];
-	intermedia_matrix_first = create_optional_matrix(intermedia_matrix_first, required_matrix_size);
+	create_optional_matrix(intermedia_matrix_first, required_matrix_size);
 	int** intermedia_matrix_second = new int* [required_matrix_size / 2];
-	intermedia_matrix_second = create_optional_matrix(intermedia_matrix_second, required_matrix_size);
+	create_optional_matrix(intermedia_matrix_second, required_matrix_size);
 	int** intermedia_matrix_third = new int* [required_matrix_size / 2];
-	intermedia_matrix_third = create_optional_matrix(intermedia_matrix_third, required_matrix_size);
+	create_optional_matrix(intermedia_matrix_third, required_matrix_size);
 	int** intermedia_matrix_fourth = new int* [required_matrix_size / 2];
-	intermedia_matrix_fourth = create_optional_matrix(intermedia_matrix_fourth, required_matrix_size);
+	create_optional_matrix(intermedia_matrix_fourth, required_matrix_size);
 	int** intermedia_matrix_fifth = new int* [required_matrix_size / 2];
-	intermedia_matrix_fifth = create_optional_matrix(intermedia_matrix_fifth, required_matrix_size);
+	create_optional_matrix(intermedia_matrix_fifth, required_matrix_size);
 	int** intermedia_matrix_sixth = new int* [required_matrix_size / 2];
-	intermedia_matrix_sixth = create_optional_matrix(intermedia_matrix_sixth, required_matrix_size);
+	create_optional_matrix(intermedia_matrix_sixth, required_matrix_size);
 	int** intermedia_matrix_seventh = new int* [required_matrix_size / 2];
-	intermedia_matrix_seventh = create_optional_matrix(intermedia_matrix_seventh, required_matrix_size);
+	create_optional_matrix(intermedia_matrix_seventh, required_matrix_size);
 
 
 
@@ -248,16 +244,16 @@ void main()
 
 	//Создание вспомогательных матриц
 	int** supporting_matrix_first = new int* [required_matrix_size / 2];
-	supporting_matrix_first = create_optional_matrix(supporting_matrix_first, required_matrix_size);
+	create_optional_matrix(supporting_matrix_first, required_matrix_size);
 
 	int** supporting_matrix_second = new int* [required_matrix_size / 2];
-	supporting_matrix_second = create_optional_matrix(supporting_matrix_second, required_matrix_size);
+	create_optional_matrix(supporting_matrix_second, required_matrix_size);
 
 	int** supporting_matrix_third = new int* [required_matrix_size / 2];
-	supporting_matrix_third = create_optional_matrix(supporting_matrix_third, required_matrix_size);
+	create_optional_matrix(supporting_matrix_third, required_matrix_size);
 
 	int** supporting_matrix_fourth = new int* [required_matrix_size / 2];
-	supporting_matrix_fourth = create_optional_matrix(supporting_matrix_fourth, required_matrix_size);
+	create_optional_matrix(supporting_matrix_fourth, required_matrix_size);
 
 
 
