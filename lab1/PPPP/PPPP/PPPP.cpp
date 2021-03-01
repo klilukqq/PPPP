@@ -3,6 +3,12 @@
 #include <ctime>
 using namespace std;
 
+void delete_matrix(int** matrix, int row) {
+	for (int i = 0; i < row; i++)
+		delete[] matrix[i];
+	delete[] matrix;
+}
+
 void matrix_print(int** matrix, int matrix_row_first, int matrix_column_first) {
 	
 	for (int number_lines = 0; number_lines < matrix_row_first; number_lines++)
@@ -11,7 +17,6 @@ void matrix_print(int** matrix, int matrix_row_first, int matrix_column_first) {
 			cout << matrix[number_lines][number_columns] << " ";
 		cout << endl;
 	}
-
 }
 
 void filling_matrix(int** matrix,int matrix_row, int matrix_column, int type_filling) {
@@ -56,7 +61,6 @@ void create_optional_matrix(int ** inter_matrix, int required_matrix_size) {
 
 void filling_submatrix(int** submatrix,int** modified_matrix,int required_matrix_size,int choose) {
 
-	
 	for (int number_lines = 0; number_lines < required_matrix_size / 2; number_lines++)
 	{
 		submatrix[number_lines] = new int[required_matrix_size / 2];
@@ -78,7 +82,6 @@ void filling_submatrix(int** submatrix,int** modified_matrix,int required_matrix
 			default:
 				break;
 			}
-			
 	}
 }
 
@@ -342,43 +345,30 @@ void main()
 	system("pause");
 
 
-
 	//Очистка динамической памяти
-	for (int number_lines = 0; number_lines < matrix_row_first; number_lines++)
-		delete[] matrix_first[number_lines];
-	for (int number_lines = 0; number_lines < matrix_row_second; number_lines++)
-		delete[] matrix_second[number_lines];
-	for (int number_lines = 0; number_lines < required_matrix_size; number_lines++)
-	{
-		delete[] modified_matrix_first[number_lines];
-		delete[] modified_matrix_second[number_lines];
-		delete[] resulting_matrix[number_lines];
-	}
-	for (int number_lines = 0; number_lines < first_null_line; number_lines++)
-		delete[] aligned_resulting_matrix[number_lines];
-	for (int number_lines = 0; number_lines < required_matrix_size / 2; number_lines++)
-	{
-		delete[] submatrix_first[number_lines];
-		delete[] submatrix_second[number_lines];
-		delete[] submatrix_third[number_lines];
-		delete[] submatrix_fourth[number_lines];
-		delete[] submatrix_fifth[number_lines];
-		delete[] submatrix_sixth[number_lines];
-		delete[] submatrix_seventh[number_lines];
-		delete[] submatrix_eighth[number_lines];
-		delete[] supporting_matrix_first[number_lines];
-		delete[] supporting_matrix_second[number_lines];
-		delete[] supporting_matrix_third[number_lines];
-		delete[] supporting_matrix_fourth[number_lines];
-		delete[] intermedia_matrix_first[number_lines];
-		delete[] intermedia_matrix_second[number_lines];
-		delete[] intermedia_matrix_third[number_lines];
-		delete[] intermedia_matrix_fourth[number_lines];
-		delete[] intermedia_matrix_fifth[number_lines];
-		delete[] intermedia_matrix_sixth[number_lines];
-		delete[] intermedia_matrix_seventh[number_lines];
-	}
-	delete[] matrix_first, matrix_second, modified_matrix_first, modified_matrix_second, resulting_matrix, aligned_resulting_matrix;
-	delete[] submatrix_first, submatrix_second, submatrix_third, submatrix_fourth, submatrix_fifth, submatrix_sixth, submatrix_seventh, submatrix_eighth, supporting_matrix_first, supporting_matrix_second, supporting_matrix_third, supporting_matrix_fourth;
-	delete[] intermedia_matrix_first, intermedia_matrix_second, intermedia_matrix_third, intermedia_matrix_fourth, intermedia_matrix_fifth, intermedia_matrix_sixth, intermedia_matrix_seventh;
+	delete_matrix(matrix_first, matrix_row_first);
+	delete_matrix(matrix_second, matrix_row_second);
+	delete_matrix(modified_matrix_first, required_matrix_size);
+	delete_matrix(modified_matrix_second, required_matrix_size);
+	delete_matrix(resulting_matrix, required_matrix_size);
+	delete_matrix(aligned_resulting_matrix, first_null_line);
+	delete_matrix(submatrix_first, required_matrix_size / 2);
+	delete_matrix(submatrix_second, required_matrix_size / 2);
+	delete_matrix(submatrix_third, required_matrix_size / 2);
+	delete_matrix(submatrix_fourth, required_matrix_size / 2);
+	delete_matrix(submatrix_fifth, required_matrix_size / 2);
+	delete_matrix(submatrix_sixth, required_matrix_size / 2);
+	delete_matrix(submatrix_seventh, required_matrix_size / 2);
+	delete_matrix(submatrix_eighth, required_matrix_size / 2);
+	delete_matrix(supporting_matrix_first, required_matrix_size / 2);
+	delete_matrix(supporting_matrix_second, required_matrix_size / 2);
+	delete_matrix(supporting_matrix_third, required_matrix_size / 2);
+	delete_matrix(supporting_matrix_fourth, required_matrix_size / 2);
+	delete_matrix(intermedia_matrix_first, required_matrix_size / 2);
+	delete_matrix(intermedia_matrix_second, required_matrix_size / 2);
+	delete_matrix(intermedia_matrix_third, required_matrix_size / 2);
+	delete_matrix(intermedia_matrix_fourth, required_matrix_size / 2);
+	delete_matrix(intermedia_matrix_fifth, required_matrix_size / 2);
+	delete_matrix(intermedia_matrix_sixth, required_matrix_size / 2);
+	delete_matrix(intermedia_matrix_seventh, required_matrix_size / 2);
 }
