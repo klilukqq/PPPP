@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\roman\Downloads\PPPP-main\PPPP-main\LAB2\x64\Debug\PPPPLab2.exe</FullPath>
+      <FullPath>C:\Users\roman\Documents\GitHub\PPPP\Lab2\PPPPLab2\x64\Debug\PPPPLab2.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\roman\Downloads\PPPP-main\PPPP-main\LAB2\x64\Debug\TestsLab2.dll</FullPath>
+      <FullPath>C:\Users\roman\Documents\GitHub\PPPP\Lab2\PPPPLab2\x64\Debug\TestsLab2.dll</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

@@ -1,4 +1,6 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: промежуточный каталог (x64\Debug\) содержит файлы, которые используются совместно с другим проектом (LAB2_TESTS.vcxproj).  Это может привести к ошибкам очистки и перестроения.
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: промежуточный каталог (x64\Debug\) содержит файлы, которые используются совместно с другим проектом (LAB2.vcxproj).  Это может привести к ошибкам очистки и перестроения.
+  pch.cpp
   TestsLab2.cpp
-  LAB2_TESTS.vcxproj -> C:\Users\roman\Downloads\PPPP-main\PPPP-main\LAB2\x64\Debug\TestsLab2.dll
+     Создается библиотека C:\Users\roman\Documents\GitHub\PPPP\Lab2\PPPPLab2\x64\Debug\TestsLab2.lib и объект C:\Users\roman\Documents\GitHub\PPPP\Lab2\PPPPLab2\x64\Debug\TestsLab2.exp
+  LAB2_TESTS.vcxproj -> C:\Users\roman\Documents\GitHub\PPPP\Lab2\PPPPLab2\x64\Debug\TestsLab2.dll
